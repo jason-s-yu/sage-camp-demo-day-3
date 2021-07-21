@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "sage_camp:items/lightning_rod"
+  }
+}

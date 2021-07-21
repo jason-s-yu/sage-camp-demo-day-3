@@ -1,0 +1,35 @@
+{
+  "_fv": 18,
+  "_type": "tool",
+  "definition": {
+    "renderType": 0,
+    "texture": "lightning_rod",
+    "customModelName": "Normal",
+    "name": "Lightning Rod",
+    "specialInfo": [
+      "Right click on a location to summon powerful lightning!"
+    ],
+    "creativeTab": {
+      "value": "MATERIALS"
+    },
+    "toolType": "Sword",
+    "harvestLevel": 1,
+    "efficiency": 3.0,
+    "attackSpeed": 2.0,
+    "enchantability": 32,
+    "damageVsEntity": 4.0,
+    "usageCount": 3000,
+    "blocksAffected": [],
+    "hasGlow": true,
+    "repairItems": [],
+    "immuneToFire": true,
+    "stayInGridWhenCrafting": true,
+    "damageOnCrafting": true,
+    "onRightClickedInAir": {
+      "name": "LightningSmiteEffect"
+    },
+    "onRightClickedOnBlock": {
+      "name": "LightningSmiteEffect"
+    }
+  }
+}
