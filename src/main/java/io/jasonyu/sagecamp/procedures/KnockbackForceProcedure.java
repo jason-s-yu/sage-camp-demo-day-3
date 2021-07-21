@@ -44,7 +44,7 @@ public class KnockbackForceProcedure extends SageCampModElements.ModElement {
 		if ((((sourceentity instanceof LivingEntity) ? ((LivingEntity) sourceentity).getHeldItemMainhand() : ItemStack.EMPTY)
 				.getItem() == new ItemStack(Blocks.AIR, (int) (1)).getItem())) {
 			entity.setMotion((Math.sin(Math.toRadians(((sourceentity.rotationYaw) + 180))) * 2),
-					Math.abs((Math.sin(Math.toRadians((sourceentity.rotationPitch))) * 4)),
+					Math.abs((Math.sin(Math.toRadians((sourceentity.rotationPitch))) * 3)),
 					(Math.cos(Math.toRadians((sourceentity.rotationYaw))) * 2));
 		}
 	}
