@@ -5,9 +5,11 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.common.MinecraftForge;
 
 import net.minecraft.world.IWorld;
-import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.item.ItemStack;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.Entity;
+import net.minecraft.block.Blocks;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -28,16 +30,30 @@ public class KnockbackForceProcedure extends SageCampModElements.ModElement {
 				SageCampMod.LOGGER.warn("Failed to load dependency entity for procedure KnockbackForce!");
 			return;
 		}
+		if (dependencies.get("sourceentity") == null) {
+			if (!dependencies.containsKey("sourceentity"))
+				SageCampMod.LOGGER.warn("Failed to load dependency sourceentity for procedure KnockbackForce!");
+			return;
+		}
 		Entity entity = (Entity) dependencies.get("entity");
-		if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
-			((PlayerEntity) entity).sendStatusMessage(new StringTextComponent("Message"), (false));
+		Entity sourceentity = (Entity) dependencies.get("sourceentity");
+		SageCampMod.LOGGER.info((new java.text.DecimalFormat("##.##").format(((Math.sin(Math.toRadians((sourceentity.rotationYaw))) + 180) * 2))));
+		SageCampMod.LOGGER
+				.info((new java.text.DecimalFormat("##.##").format(Math.abs((Math.sin(Math.toRadians((sourceentity.rotationPitch))) * 2)))));
+		SageCampMod.LOGGER.info((new java.text.DecimalFormat("##.##").format((Math.cos(Math.toRadians((sourceentity.rotationYaw))) * 2))));
+		if ((((sourceentity instanceof LivingEntity) ? ((LivingEntity) sourceentity).getHeldItemMainhand() : ItemStack.EMPTY)
+				.getItem() == new ItemStack(Blocks.AIR, (int) (1)).getItem())) {
+			entity.setMotion((Math.sin(Math.toRadians(((sourceentity.rotationYaw) + 180))) * 2),
+					Math.abs((Math.sin(Math.toRadians((sourceentity.rotationPitch))) * 4)),
+					(Math.cos(Math.toRadians((sourceentity.rotationYaw))) * 2));
 		}
 	}
 
 	@SubscribeEvent
-	public void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
-		PlayerEntity entity = event.getPlayer();
-		if (event.getHand() != entity.getActiveHand()) {
+	public void onRightClickEntity(PlayerInteractEvent.EntityInteract event) {
+		Entity entity = event.getTarget();
+		PlayerEntity sourceentity = event.getPlayer();
+		if (event.getHand() != sourceentity.getActiveHand()) {
 			return;
 		}
 		double i = event.getPos().getX();
@@ -50,6 +66,7 @@ public class KnockbackForceProcedure extends SageCampModElements.ModElement {
 		dependencies.put("z", k);
 		dependencies.put("world", world);
 		dependencies.put("entity", entity);
+		dependencies.put("sourceentity", sourceentity);
 		dependencies.put("event", event);
 		this.executeProcedure(dependencies);
 	}

@@ -64,7 +64,7 @@ public class LightningRodItem extends SageCampModElements.ModElement {
 			public Ingredient getRepairMaterial() {
 				return Ingredient.EMPTY;
 			}
-		}, 3, -2f, new Item.Properties().group(ItemGroup.MATERIALS).isImmuneToFire()) {
+		}, 3, -2f, new Item.Properties().group(ItemGroup.COMBAT).isImmuneToFire()) {
 			@Override
 			public boolean hasContainerItem() {
 				return true;

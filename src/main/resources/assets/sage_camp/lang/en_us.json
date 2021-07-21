@@ -1,6 +1,11 @@
 {
+  "item.minecraft.lingering_potion.effect.knockback": "Lingering Knockback",
   "biome.sage_camp.metal_world": "Metal World",
   "item.sage_camp.lightning_rod": "Lightning Rod",
+  "item.minecraft.tipped_arrow.effect.knockback": "Arrow of Knockback",
   "item.sage_camp.waterbender": "Waterbender",
-  "item.sage_camp.explosion_rod": "Explosion Rod"
+  "item.minecraft.splash_potion.effect.knockback": "Splash Knockback",
+  "item.sage_camp.explosion_rod": "Explosion Rod",
+  "item.minecraft.potion.effect.knockback": "Knockback",
+  "effect.knockback": "Knockback"
 }
